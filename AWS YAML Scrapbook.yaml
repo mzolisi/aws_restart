@@ -1,0 +1,93 @@
+Type: AWS::EC2::Instance
+Properties:
+  AdditionalInfo: String
+  Affinity: String
+  AvailabilityZone: String
+  BlockDeviceMappings: 
+    - BlockDeviceMapping
+  CpuOptions: 
+    CpuOptions
+  CreditSpecification: 
+    CreditSpecification
+  DisableApiTermination: Boolean
+  EbsOptimized: Boolean
+  ElasticGpuSpecifications: 
+    - ElasticGpuSpecification
+  ElasticInferenceAccelerators: 
+    - ElasticInferenceAccelerator
+  EnclaveOptions: 
+    EnclaveOptions
+  HibernationOptions: 
+    HibernationOptions
+  HostId: String
+  HostResourceGroupArn: String
+  IamInstanceProfile: String
+  ImageId: String
+  InstanceInitiatedShutdownBehavior: String
+  InstanceType: String
+  Ipv6AddressCount: Integer
+  Ipv6Addresses: 
+    - InstanceIpv6Address
+  KernelId: String
+  KeyName: String
+  LaunchTemplate: 
+    LaunchTemplateSpecification
+  LicenseSpecifications: 
+    - LicenseSpecification
+  Monitoring: Boolean
+  NetworkInterfaces: 
+    - NetworkInterface
+  PlacementGroupName: String
+  PrivateDnsNameOptions: 
+    PrivateDnsNameOptions
+  PrivateIpAddress: String
+  PropagateTagsToVolumeOnCreation: Boolean
+  RamdiskId: String
+  SecurityGroupIds: 
+    - String
+  SecurityGroups: 
+    - String
+  SourceDestCheck: Boolean
+  SsmAssociations: 
+    - SsmAssociation
+  SubnetId: String
+  Tags: 
+    - Tag
+  Tenancy: String
+  UserData: String
+  Volumes: 
+    - Volume
+
+
+#EC2 instance with an EBS block device mapping
+#The following example creates an EC2 instance with a block device mapping with an entry that specifies an io1 volume with a size of 20 GB and an entry that uses NoDevice to override a device specified in the AMI block device mapping.
+
+  MyEC2Instance: 
+  Type: AWS::EC2::Instance
+  Properties: 
+    ImageId: "ami-79fd7eee"
+    KeyName: "testkey"
+    BlockDeviceMappings: 
+    - DeviceName: "/dev/sdm"
+      Ebs: 
+        VolumeType: "io1"
+        Iops: "200"
+        DeleteOnTermination: "false"
+        VolumeSize: "20"
+    - DeviceName: "/dev/sdk"
+      NoDevice: {}
+
+
+
+Type: AWS::EC2::Instance
+Properties:
+  ImageId: String
+  InstanceInitiatedShutdownBehavior: String
+  InstanceType: String
+  SecurityGroupIds: 
+    - String
+  SubnetId: String
+  Tags:
+    - Key: Name
+      Value: App Server
+
